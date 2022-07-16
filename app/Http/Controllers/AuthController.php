@@ -5,10 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller {
+  public function get_redirect() {
+    return redirect()->route("index");
+  }
+
   public function post_login(LoginRequest $request) {
     $email = $request->input("login_email");
     $password = $request->input("login_password");
@@ -38,7 +43,7 @@ class AuthController extends Controller {
 
     $user->save();
 
-    Auth::attempt(["email" => $request->input("email"), "password" => $request->input("password")]);
+    event(new Registered($user));
 
     return redirect()->route("home");
   }
