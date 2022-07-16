@@ -45,6 +45,11 @@ class AuthController extends Controller {
 
     event(new Registered($user));
 
+    Auth::attempt([
+      "email" => $request->input("email"),
+      "password" => $request->input("password")
+    ]);
+
     return redirect()->route("home");
   }
 

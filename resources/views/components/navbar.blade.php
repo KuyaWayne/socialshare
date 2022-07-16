@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark navbar-expand-lg bg-primary fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">{{ env("APP_NAME") }}</a>
+    <a class="navbar-brand" href="#">SocialShare</a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
